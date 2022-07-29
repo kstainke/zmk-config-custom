@@ -13,16 +13,6 @@
 };
 
 / {
-        // Battery sensor config
-        chosen {
-            zmk,battery = &vbatt;
-        };
-
-        vbatt: vbatt {
-            compatible = "zmk,battery-nrf-vddh";
-            label = "VBATT";
-        };
-
         // Tap-dance definitions
         behaviors {
             td0: tap_dance_0 {
@@ -50,21 +40,21 @@
                                     &kp LGUI  &mo 1  &kp SPACE  &kp RET  &mo 2  &kp RALT
                         >;
                 };
-                lower_layer {
+                raise_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | BKSP| LFT |  UP | DWN | RGT |      |
 // |Z-SHFT|BTCLR|     |     |     |     |   | DEL | HME |PG_UP|PG_DN| END |      |
 //                    | GUI |     | BKSP|   | TAB |     | ALT |
                         bindings = <
-   &kp TAB       &kp N1        &kp N2       &kp N3        &kp N4        &kp N5        &kp N6    &kp N7    &kp N8     &kp N9     &kp N0     &kp BSPC
-   &bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &mt LS(HOME) HOME  &mt LA(LEFT) LEFT  &td0  &kp DOWN   &mt LA(RIGHT) RIGHT  &mt LS(END) END
-   &mt LSHIFT Z  &bt BT_CLR    &trans        &trans        &trans        &trans        &kp DEL   &kp HOME  &kp PG_UP  &kp PG_DN  &kp END    &trans
-                                             &kp LGUI      &trans        &kp BSPC      &kp TAB   &trans    &kp RALT
+   &kp TAB       &kp N1        &kp N2        &kp N3        &kp N4        &kp N5        &kp N6             &kp N7             &kp N8     &kp N9     &kp N0               &kp BSPC
+   &bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &mt LS(HOME) HOME  &mt LA(LEFT) LEFT  &td0       &kp DOWN   &mt LA(RIGHT) RIGHT  &mt LS(END) END
+   &mt LSHIFT Z  &bt BT_CLR    &trans        &trans        &trans        &trans        &kp DEL            &kp HOME           &kp PG_UP  &kp PG_DN  &kp END              &trans
+                                             &kp LGUI      &trans        &kp BSPC      &kp TAB            &trans             &kp RALT
                         >;
                 };
 
-                raise_layer {
+                lower_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  !   |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
 // | CTRL |      |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
